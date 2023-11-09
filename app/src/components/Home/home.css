@@ -26,6 +26,10 @@
   display: flex;
   justify-content: center;
 }
+.product-images .main-image-container .main-product-image {
+  width: 280px;
+  height: 436px;
+}
 .product-images .secondary-images-container {
   width: 100%;
   margin-top: 56px;
@@ -44,7 +48,6 @@
 .product-images .secondary-images-container .first {
   width: 46px;
   margin-left: 0;
-  cursor: auto;
 }
 .product-images .secondary-images-container .first-image-container {
   display: inline-flex;

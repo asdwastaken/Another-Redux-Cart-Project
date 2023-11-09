@@ -14,6 +14,14 @@ import HomeMenus from './HomeMenus/HomeMenus';
 
 export default function Home() {
 
+    const images = [image1, image2, image3, image4, image5];
+    const [activeImage, setActiveImage] = useState(image1);
+
+    const onImageClick = (image) => {
+        setActiveImage(image)
+    }
+
+
     const [activeMenu, setActiveMenu] = useState({
         info: true,
         brand: false,
@@ -36,16 +44,14 @@ export default function Home() {
             <div className="home-product-container">
                 <div className="product-images">
                     <div className="main-image-container">
-                        <img src={image1} className="main-product-image" />
+                        <img src={activeImage} className="main-product-image" />
                     </div>
                     <div className="secondary-images-container">
-                        <div className="first-image-container">
-                            <img src={image1} className="product-image first" />
-                        </div>
-                        <img src={image2} className="product-image" />
-                        <img src={image3} className="product-image" />
-                        <img src={image4} className="product-image" />
-                        <img src={image5} className="product-image" />
+                        {images.map((img, index) => (
+                            <div key={index} className={index === 0 ? "first-image-container" : "product-image-container"}>
+                                <img src={img} className={`product-image ${index === 0 ? 'first' : ''}`} onClick={() => onImageClick(img)}/>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className="product-info">

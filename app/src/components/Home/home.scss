@@ -29,6 +29,11 @@
     .main-image-container {
         display: flex;
         justify-content: center;
+
+        .main-product-image{
+            width: 280px;
+            height: 436px;
+        }
     }
 
     .secondary-images-container {
@@ -50,7 +55,6 @@
         .first {
             width: 46px;
             margin-left: 0;
-            cursor: auto;
         }
 
         .first-image-container {
