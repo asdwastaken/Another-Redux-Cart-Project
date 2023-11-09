@@ -3,6 +3,7 @@
   background-color: #FFFFFF;
   position: fixed;
   width: 100%;
+  z-index: 5;
 }
 
 .logo {
@@ -62,7 +63,7 @@
   color: #1B2437;
   position: relative;
 }
-.navbar-links .nav-link::after {
+.navbar-links .active::after {
   content: "";
   height: 20px;
   width: 2.4px;

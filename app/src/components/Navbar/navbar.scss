@@ -5,6 +5,7 @@
     background-color: $primary-background-color;
     position: fixed;
     width: 100%;
+    z-index: 5;
 }
 
 
@@ -73,6 +74,9 @@
         text-decoration: none;
         color: $primary-text-color;
         position: relative;
+    }
+
+    .active {
 
         &::after {
             content: '';

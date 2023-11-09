@@ -5,11 +5,12 @@ import twitterIcon from '../../content/Icons/twitter-icon.png'
 import instagramIcon from '../../content/Icons/instagram-icon.png'
 import cartIcon from '../../content/Icons/cart-icon.png'
 import searchIcon from '../../content/Icons/search-icon.png'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 
 export default function Navbar() {
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -37,10 +38,10 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-links">
                     <div className="navbar-links-inner">
-                        <Link className="nav-link">Home</Link>
-                        <Link className="nav-link">Shop</Link>
-                        <Link className="nav-link">Blog</Link>
-                        <Link className="nav-link">Contact</Link>
+                        <NavLink className="nav-link" to='/' activeClassName="active">Home</NavLink>
+                        <NavLink className="nav-link" to='/shop' activeClassName="active">Shop</NavLink>
+                        <NavLink className="nav-link" to='/blog' activeClassName="active">Blog</NavLink>
+                        <NavLink className="nav-link" to='/contact' activeClassName="active">Contact</NavLink>
                     </div>
                 </div>
 

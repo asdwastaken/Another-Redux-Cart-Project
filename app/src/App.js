@@ -5,8 +5,10 @@ import RoutesComp from './components/RoutesComp';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <RoutesComp />
+      <main>
+        <Navbar />
+        <RoutesComp />
+      </main>
     </div>
   );
 }
