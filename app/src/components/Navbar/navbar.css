@@ -1,1 +1,73 @@
-/*# sourceMappingURL=navbar.css.map */
+.navbar {
+  height: 180px;
+  background-color: #FFFFFF;
+  position: fixed;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.logo .logo-icon {
+  width: 22px;
+  height: 23px;
+  margin-right: 16px;
+}
+
+.navbar-upper,
+.cart-icons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-upper {
+  padding-left: 40px;
+  padding-right: 53px;
+  padding-top: 19px;
+  justify-content: space-between;
+  margin-bottom: 68px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.social-icons .social-icon-link {
+  margin-right: 40px;
+}
+
+.search-icon {
+  margin-right: 24px;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+}
+.navbar-links .navbar-links-inner {
+  margin-left: 80px;
+}
+.navbar-links .nav-link {
+  margin-right: 80px;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-decoration: none;
+  color: #1B2437;
+  position: relative;
+}
+.navbar-links .nav-link::after {
+  content: "";
+  height: 20px;
+  width: 2.4px;
+  background-color: #1B2437;
+  position: absolute;
+  bottom: -27px;
+  left: 50%;
+}/*# sourceMappingURL=navbar.css.map */

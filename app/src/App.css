@@ -1,1 +1,11 @@
-/*# sourceMappingURL=App.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  color: #1B2437;
+}/*# sourceMappingURL=App.css.map */
