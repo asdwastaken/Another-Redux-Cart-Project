@@ -18,6 +18,8 @@ import Reviews from './Reviews/Reviews';
 export default function Home() {
 
     const images = [image1, image2, image3, image4, image5];
+    const [activeImage, setActiveImage] = useState(image1);
+    const [starRating, setStarRating] = useState(0);
     const dispatch = useDispatch();
 
     const { title,
@@ -27,10 +29,10 @@ export default function Home() {
 
 
     useEffect(() => {
-        dispatch(getProduct('1'));
-    }, [])
+        dispatch(getProduct('1'))
+        calculateRating()
+    }, [reviews])
 
-    const [activeImage, setActiveImage] = useState(image1);
 
     const onImageClick = (image) => {
         setActiveImage(image)
@@ -51,6 +53,31 @@ export default function Home() {
             [menu]: true,
         }));
     }
+
+    const calculateRating = () => {
+        let ratings = 0;
+
+        reviews.map(review => {
+            ratings += Number(review.rating);
+        });
+
+        const averageRating = ratings / reviews.length;
+        setStarRating(averageRating)
+    }
+
+    const renderRating = (rating) => {
+        const stars = [];
+        for (let i = 0; i < rating; i++) {
+            stars.unshift(< img src={starActive} className="review-star" key={i} />)
+        }
+        for (let i = stars.length; i < 5; i++) {
+            stars.push(<img key={i} src={starInactive} className="review-star" />);
+        }
+
+        return stars;
+    }
+
+
 
 
 
@@ -78,11 +105,7 @@ export default function Home() {
                     </div>
                     <h1>{title}</h1>
                     <div className="review-stars-container">
-                        <img src={starActive} className="review-star" />
-                        <img src={starActive} className="review-star" />
-                        <img src={starActive} className="review-star" />
-                        <img src={starActive} className="review-star" />
-                        <img src={starInactive} className="review-star" />
+                        {renderRating(starRating)}
                         <span>132 reviews</span>
                     </div>
 
@@ -92,7 +115,11 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <Reviews reviews={reviews} />
+            <Reviews
+                reviews={reviews}
+                renderRating={renderRating}
+                starRating={starRating}
+            />
 
         </div>
     )

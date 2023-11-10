@@ -11,8 +11,8 @@ export default function InfoMenu() {
         color,
     } = useSelector(state => state.product);
 
-    const [selectedSize, setSelectedSize] = useState('');
-    const [selectedColor, setSelectedColor] = useState('');
+    const [selectedSize, setSelectedSize] = useState('S');
+    const [selectedColor, setSelectedColor] = useState('black');
 
 
     const selectSize = (size) => {

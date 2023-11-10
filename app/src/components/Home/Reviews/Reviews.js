@@ -4,18 +4,20 @@ import starInactive from '../../../content/Icons/star-inactive.png';
 
 
 export default function Reviews({
-    reviews
+    reviews,
+    renderRating,
+    starRating
 }) {
+
+
+
+
     return (
         <div className="product-reviews">
             <h2>Reviews</h2>
 
             <div className="review-stars-container">
-                <img src={starActive} className="review-star" />
-                <img src={starActive} className="review-star" />
-                <img src={starActive} className="review-star" />
-                <img src={starActive} className="review-star" />
-                <img src={starInactive} className="review-star" />
+                {renderRating(starRating)}
             </div>
 
             <form className="review-form">
@@ -38,16 +40,12 @@ export default function Reviews({
             </form>
 
             <div className="added-reviews-container">
-                {reviews.map(review => {
+                {reviews.map((review, index) => {
                     return (
-                        <div className="review">
+                        <div className="review" key={index}>
                             <h2>{review.author} &lt;{review.email}&gt;</h2>
                             <div className="review-stars-container">
-                                <img src={starActive} className="review-star" />
-                                <img src={starActive} className="review-star" />
-                                <img src={starActive} className="review-star" />
-                                <img src={starActive} className="review-star" />
-                                <img src={starInactive} className="review-star" />
+                                {renderRating(review.rating)}
                             </div>
                             <p>{review.message}</p>
                         </div>

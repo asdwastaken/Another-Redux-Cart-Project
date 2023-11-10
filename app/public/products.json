@@ -20,6 +20,12 @@
                 "email": "john.doe@gmail.com",
                 "rating": "4",
                 "message": "Example review"
+            },
+            {
+                "author": "John Doe 2",
+                "email": "john.doe2@gmail.com",
+                "rating": "3",
+                "message": "Example review 2"
             }
         ]
     },
