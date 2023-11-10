@@ -206,6 +206,12 @@
             margin-right: 12px;
             cursor: pointer;
         }
+
+        .selected {
+            background-color: $secondary-text-color;
+            color: white;
+            border: 2px solid $secondary-text-color;
+        }
     }
 }
 
@@ -222,6 +228,13 @@
             height: 24px;
             width: 24px;
             margin-right: 16px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .selected {
+            border: 3px solid white;
+            outline: 2px solid #1B2437
         }
 
         #black {
@@ -377,7 +390,7 @@
                 margin-bottom: 7px;
             }
 
-            p{
+            p {
                 font-size: 0.8em;
             }
 

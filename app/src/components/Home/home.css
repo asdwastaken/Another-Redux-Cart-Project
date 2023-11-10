@@ -176,6 +176,11 @@
   margin-right: 12px;
   cursor: pointer;
 }
+.product-size-color-container .sizes .selected {
+  background-color: #EDA3B5;
+  color: white;
+  border: 2px solid #EDA3B5;
+}
 
 .product-color-container {
   margin-left: 82px;
@@ -188,6 +193,12 @@
   height: 24px;
   width: 24px;
   margin-right: 16px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.product-color-container .colors .selected {
+  border: 3px solid white;
+  outline: 2px solid #1B2437;
 }
 .product-color-container .colors #black {
   background-color: #1B2437;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 
@@ -10,8 +11,26 @@ export default function InfoMenu() {
         color,
     } = useSelector(state => state.product);
 
+    const [selectedSize, setSelectedSize] = useState('');
+    const [selectedColor, setSelectedColor] = useState('');
+
+
+    const selectSize = (size) => {
+        setSelectedSize(size);
+    }
+
+    const selectColor = (color) => {
+        setSelectedColor(color);
+    }
+
+
     const colors = () => {
-        return Object.keys(color).map((x, index) => <div className="color" id={x} key={index}></div>)
+        return Object.keys(color).map((x, index) =>
+            <div className={selectedColor == x ? "color selected" : "color"}
+                id={x}
+                key={index}
+                onClick={() => selectColor(x)}>
+            </div >)
     }
 
 
@@ -29,7 +48,12 @@ export default function InfoMenu() {
                         <span className="size-guide">Size Guide</span>
                     </div>
                     <div className="sizes">
-                        {size.map((x, index) => <div className="size" key={index}>{x}</div>)}
+                        {size.map((x, index) =>
+                            <div className={selectedSize == x ? "size selected" : "size"}
+                                key={index}
+                                onClick={(() => selectSize(x))}>
+                                {x}
+                            </div>)}
                     </div>
                 </div>
 
