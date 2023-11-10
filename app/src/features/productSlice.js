@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getProduct } from "../services/productService";
 
+
 const initialState = {
     "title": "",
     "description": "",
@@ -9,6 +10,7 @@ const initialState = {
     "color": {},
     "reviews": [],
     "liked": false,
+    "starRating": 0,
 }
 
 const productSlice = createSlice({
@@ -17,9 +19,44 @@ const productSlice = createSlice({
     reducers: {
         likeProduct: (state) => {
             state.liked = !state.liked;
+        },
+        calculateRating: (state) => {
+            let ratings = 0;
+
+            state.reviews.map(review => {
+                ratings += Number(review.rating);
+            });
+
+            const averageRating = ratings / state.reviews.length;
+            state.starRating = averageRating;
+        },
+        addReview: {
+            reducer(state, action) {
+                state.reviews.push(action.payload);
+            },
+            prepare({author, email, rating, message,}) {
+                return {
+                    payload: {
+                        author,
+                        email,
+                        rating,
+                        message,
+                    }
+                }
+            }
         }
     },
     extraReducers: {
+        [getProduct.pending]: (state) => {
+            state.title = "";
+            state.description = "";
+            state.price = "";
+            state.size = [];
+            state.color = {};
+            state.reviews = [];
+            state.liked = false;
+        },
+
         [getProduct.fulfilled]: (state, action) => {
             state.title = action.payload.title;
             state.description = action.payload.description;
@@ -30,8 +67,8 @@ const productSlice = createSlice({
             state.liked = action.payload.liked;
         }
     }
-})
+});
 
-export const { likeProduct } = productSlice.actions;
+export const { likeProduct, calculateRating, addReview} = productSlice.actions;
 
 export default productSlice.reducer;

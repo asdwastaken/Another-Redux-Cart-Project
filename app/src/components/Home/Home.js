@@ -9,29 +9,30 @@ import starActive from '../../content/Icons/star-active.png';
 import starInactive from '../../content/Icons/star-inactive.png';
 
 import HomeMenus from './HomeMenus/HomeMenus';
+import Reviews from './Reviews/Reviews';
 
 import { getProduct } from '../../services/productService';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Reviews from './Reviews/Reviews';
+import { calculateRating, likeProduct, } from '../../features/productSlice';
 
 export default function Home() {
 
     const images = [image1, image2, image3, image4, image5];
     const [activeImage, setActiveImage] = useState(image1);
-    const [starRating, setStarRating] = useState(0);
     const dispatch = useDispatch();
 
     const { title,
         reviews,
         liked,
+        starRating
     } = useSelector(state => state.product);
 
 
     useEffect(() => {
         dispatch(getProduct('1'))
-        calculateRating()
-    }, [reviews])
+            .then(() => dispatch(calculateRating()));
+    }, [])
 
 
     const onImageClick = (image) => {
@@ -54,24 +55,15 @@ export default function Home() {
         }));
     }
 
-    const calculateRating = () => {
-        let ratings = 0;
 
-        reviews.map(review => {
-            ratings += Number(review.rating);
-        });
-
-        const averageRating = ratings / reviews.length;
-        setStarRating(averageRating)
-    }
 
     const renderRating = (rating) => {
         const stars = [];
         for (let i = 0; i < rating; i++) {
-            stars.unshift(< img src={starActive} className="review-star" key={i} />)
+            stars.push(< img src={starActive} className="review-star" key={i} name={`star${i+1}`}/>)
         }
         for (let i = stars.length; i < 5; i++) {
-            stars.push(<img key={i} src={starInactive} className="review-star" />);
+            stars.push(<img key={i} src={starInactive} className="review-star" name={`star${i+1}`}/>);
         }
 
         return stars;
@@ -100,7 +92,7 @@ export default function Home() {
                     <div className="product-info-top">
                         <div className="product-label">Popular</div>
                         <div className="heart-icon-container">
-                            <img src={heartIcon} className="heart-icon" />
+                            <img src={heartIcon} className="heart-icon" onClick={() => dispatch(likeProduct)} />
                         </div>
                     </div>
                     <h1>{title}</h1>

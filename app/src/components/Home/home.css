@@ -178,8 +178,9 @@
 }
 .product-size-color-container .sizes .selected {
   background-color: #EDA3B5;
-  color: white;
   border: 2px solid #EDA3B5;
+  color: white;
+  transition: all 0.1s ease-in-out;
 }
 
 .product-color-container {
@@ -234,12 +235,24 @@
 .product-price-container .product-buttons-container .shop-now-btn {
   background-color: #EDA3B5;
   color: white;
-  border: 2px solid white;
+  border: 2px solid #EDA3B5;
   margin-right: 24px;
+  transition: all 0.15s ease-in-out;
+}
+.product-price-container .product-buttons-container .shop-now-btn:hover {
+  background-color: #e98ea4;
+  border-color: #e98ea4;
 }
 .product-price-container .product-buttons-container .add-to-cart-btn {
   background-color: white;
   border: 2px solid #EDA3B5;
+  color: #1B2437;
+  transition: all 0.15s ease-in-out;
+}
+.product-price-container .product-buttons-container .add-to-cart-btn:hover {
+  background-color: #e98ea4;
+  border-color: #e98ea4;
+  color: white;
 }
 
 .product-reviews {
@@ -272,6 +285,9 @@
   display: flex;
   margin-bottom: 32px;
 }
+.product-reviews .review-form .review-star {
+  cursor: pointer;
+}
 .product-reviews .review-form .review-form-container-inner {
   display: flex;
   flex-direction: column;
@@ -303,6 +319,12 @@
   color: #EDA3B5;
   margin-top: 32px;
   margin-left: auto;
+  transition: all 0.15s ease-in-out;
+}
+.product-reviews .review-form .add-review-btn:hover {
+  background-color: #e98ea4;
+  border-color: #e98ea4;
+  color: white;
 }
 .product-reviews .added-reviews-container {
   display: flex;
