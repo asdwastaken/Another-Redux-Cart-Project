@@ -12,6 +12,8 @@
   padding: 32px 68px 40px 40px;
   display: flex;
   border-radius: 20px;
+  margin-left: 12px;
+  margin-right: -12px;
 }
 
 .product-images {
@@ -227,4 +229,90 @@
 .product-price-container .product-buttons-container .add-to-cart-btn {
   background-color: white;
   border: 2px solid #EDA3B5;
+}
+
+.product-reviews {
+  margin-top: 39px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 56px 38px 132px 40px;
+}
+.product-reviews h2 {
+  font-size: 1.7em;
+  font-weight: 400;
+  margin-bottom: 21px;
+}
+.product-reviews .review-stars-container {
+  margin-bottom: 10px;
+}
+.product-reviews .review-form label {
+  font-size: 0.8em;
+}
+.product-reviews .review-form input,
+.product-reviews .review-form textarea {
+  border: 2px solid #E5E5EA;
+  padding: 14px 12px 18px 12px;
+  font-size: 0.7em;
+  outline: none;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+.product-reviews .review-form .review-form-container {
+  display: flex;
+  margin-bottom: 32px;
+}
+.product-reviews .review-form .review-form-container-inner {
+  display: flex;
+  flex-direction: column;
+  margin-right: 38px;
+  width: 100%;
+}
+.product-reviews .review-form #review-form-email-container {
+  margin-right: 0;
+}
+.product-reviews .review-form .review-form-message-container {
+  display: flex;
+  flex-direction: column;
+}
+.product-reviews .review-form .review-form-message-container textarea {
+  resize: none;
+  min-height: 150px;
+}
+.product-reviews .review-form .add-review-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  width: 160px;
+  height: 52px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #EDA3B5;
+  color: #EDA3B5;
+  margin-top: 32px;
+  margin-left: auto;
+}
+.product-reviews .added-reviews-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 49px;
+}
+.product-reviews .added-reviews-container .review {
+  background-color: #E5E5EA;
+  border-radius: 10px;
+  padding: 18px 17px;
+  color: #8E8E93;
+  min-height: 195px;
+}
+.product-reviews .added-reviews-container .review h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 7px;
+}
+.product-reviews .added-reviews-container .review p {
+  font-size: 0.8em;
+}
+.product-reviews .added-reviews-container .review .review-stars-container {
+  margin-bottom: 20px;
 }/*# sourceMappingURL=home.css.map */

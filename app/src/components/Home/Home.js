@@ -8,9 +8,10 @@ import heartIcon from '../../content/Icons/heart-icon.png';
 import starActive from '../../content/Icons/star-active.png';
 import starInactive from '../../content/Icons/star-inactive.png';
 
-import { useState } from 'react';
 import HomeMenus from './HomeMenus/HomeMenus';
 
+import { useState } from 'react';
+import Reviews from './Reviews/Reviews';
 
 export default function Home() {
 
@@ -49,7 +50,7 @@ export default function Home() {
                     <div className="secondary-images-container">
                         {images.map((img, index) => (
                             <div key={index} className={index === 0 ? "first-image-container" : "product-image-container"}>
-                                <img src={img} className={`product-image ${index === 0 ? 'first' : ''}`} onClick={() => onImageClick(img)}/>
+                                <img src={img} className={`product-image ${index === 0 ? 'first' : ''}`} onClick={() => onImageClick(img)} />
                             </div>
                         ))}
                     </div>
@@ -72,9 +73,10 @@ export default function Home() {
                     </div>
 
                     <HomeMenus onMenuClick={onMenuClick} activeMenu={activeMenu} />
-
                 </div>
             </div>
+            <Reviews />
+
         </div>
     )
 }
