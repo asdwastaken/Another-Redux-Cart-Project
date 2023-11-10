@@ -1,13 +1,25 @@
+import { useSelector } from "react-redux";
 
 
 export default function InfoMenu() {
+
+    const {
+        description,
+        price,
+        size,
+        color,
+    } = useSelector(state => state.product);
+
+    const colors = () => {
+        return Object.keys(color).map((x, index) => <div className="color" id={x} key={index}></div>)
+    }
+
+
     return (
         <>
             <div className="product-description-container">
                 <p>
-                    Dress with tulle and collar Peter Pan from REDValentino
-                    (Red Valentino). Peter Pan collar, tulle panels, sleeveless model,
-                    concealed back zipper and pleated skirt. Black colour.
+                    {description}
                 </p>
             </div>
             <div className="product-size-color-container">
@@ -17,18 +29,14 @@ export default function InfoMenu() {
                         <span className="size-guide">Size Guide</span>
                     </div>
                     <div className="sizes">
-                        <div className="size">XS</div>
-                        <div className="size">S</div>
-                        <div className="size">M</div>
+                        {size.map((x, index) => <div className="size" key={index}>{x}</div>)}
                     </div>
                 </div>
 
                 <div className="product-color-container">
                     <span>Color</span>
                     <div className="colors">
-                        <div className="color" id="black"></div>
-                        <div className="color" id="blue"></div>
-                        <div className="color" id="green"></div>
+                        {colors()}
                     </div>
                 </div>
 
@@ -36,7 +44,7 @@ export default function InfoMenu() {
             <div className="product-price-container">
                 <div className="product-price">
                     <span id="price-span">$</span>
-                    <span>1315</span>
+                    <span>{price}</span>
                 </div>
                 <div className="product-buttons-container">
                     <button className="shop-now-btn">Shop Now</button>

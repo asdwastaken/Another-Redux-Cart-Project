@@ -10,12 +10,26 @@ import starInactive from '../../content/Icons/star-inactive.png';
 
 import HomeMenus from './HomeMenus/HomeMenus';
 
-import { useState } from 'react';
+import { getProduct } from '../../services/productService';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Reviews from './Reviews/Reviews';
 
 export default function Home() {
 
     const images = [image1, image2, image3, image4, image5];
+    const dispatch = useDispatch();
+
+    const { title,
+        reviews,
+        liked,
+    } = useSelector(state => state.product);
+
+
+    useEffect(() => {
+        dispatch(getProduct('1'));
+    }, [])
+
     const [activeImage, setActiveImage] = useState(image1);
 
     const onImageClick = (image) => {
@@ -62,7 +76,7 @@ export default function Home() {
                             <img src={heartIcon} className="heart-icon" />
                         </div>
                     </div>
-                    <h1>Black Valentino dress with tulle</h1>
+                    <h1>{title}</h1>
                     <div className="review-stars-container">
                         <img src={starActive} className="review-star" />
                         <img src={starActive} className="review-star" />
@@ -72,10 +86,13 @@ export default function Home() {
                         <span>132 reviews</span>
                     </div>
 
-                    <HomeMenus onMenuClick={onMenuClick} activeMenu={activeMenu} />
+                    <HomeMenus
+                        onMenuClick={onMenuClick}
+                        activeMenu={activeMenu}
+                    />
                 </div>
             </div>
-            <Reviews />
+            <Reviews reviews={reviews} />
 
         </div>
     )

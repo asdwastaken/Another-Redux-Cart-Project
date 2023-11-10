@@ -1,13 +1,14 @@
 [
     {
+        "id": "1",
         "title": "Black Valentino dress with tulle",
         "description": "Dress with tulle and collar Peter Pan from REDValentino (Red Valentino). Peter Pan collar, tulle panels, sleeveless model, concealed back zipper and pleated skirt. Black colour.",
         "price": "1315",
-        "size": {
-            "XS": "XS",
-            "S": "S",
-            "M": "M"
-        },
+        "size": [
+            "XS",
+            "S",
+            "M"
+        ],
         "color": {
             "black": "#1B2437",
             "blue": "#127681",
@@ -18,15 +19,18 @@
                 "author": "John Doe",
                 "email": "john.doe@gmail.com",
                 "rating": "4",
-                "review": "Example review"
+                "message": "Example review"
             }
         ]
     },
     {
+        "id": "2",
         "title": "Gucci Leather belt",
         "description": "",
         "price": "32",
-        "size": "70 cm",
+        "size": [
+            "70 cm"
+        ],
         "color": {
             "black": "#1B2437",
             "yellow": "#F3C623"
@@ -34,10 +38,13 @@
         "reviews": []
     },
     {
+        "id": "3",
         "title": "Fendi D-frame gold-tone sunglasses",
         "description": "",
         "price": "26",
-        "sizes": "Height: 6 cm / 2.3 in. Width: 15 cm / 5.9 in.",
+        "size": [
+            "Height: 6 cm / 2.3 in. Width: 15 cm / 5.9 in."
+        ],
         "color": {
             "black": "#1B2437"
         },

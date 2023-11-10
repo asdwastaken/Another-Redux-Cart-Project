@@ -15,7 +15,7 @@
     background-color: $primary-background-color;
     padding: 32px 68px 40px 40px;
     display: flex;
-    border-radius: 20px;
+    border-radius: 16px;
     margin-left: 12px;
     margin-right: -12px;
 }
@@ -66,7 +66,7 @@
             height: 88px;
             width: 88px;
             border: 1px solid #E5E5EA;
-            border-radius: 10px;
+            border-radius: 8px;
         }
     }
 }
@@ -92,7 +92,7 @@
             padding: 6px 22px 8px 22px;
             text-align: center;
             background-color: #E5E5EA;
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         .heart-icon-container {
@@ -200,7 +200,7 @@
             align-items: center;
             justify-content: center;
             border: 2px solid #E5E5EA;
-            border-radius: 10px;
+            border-radius: 8px;
             width: 68px;
             height: 44px;
             margin-right: 12px;
@@ -262,7 +262,7 @@
             font-size: 1em;
             width: 160px;
             height: 52px;
-            border-radius: 20px;
+            border-radius: 16px;
             cursor: pointer;
         }
 
@@ -286,7 +286,7 @@
 .product-reviews {
     margin-top: 39px;
     background-color: $primary-background-color;
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 56px 38px 132px 40px;
 
     h2 {
@@ -310,7 +310,7 @@
             padding: 14px 12px 18px 12px;
             font-size: 0.7em;
             outline: none;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-top: 5px;
         }
 
@@ -347,7 +347,7 @@
             font-size: 1em;
             width: 160px;
             height: 52px;
-            border-radius: 20px;
+            border-radius: 16px;
             cursor: pointer;
             background-color: white;
             border: 2px solid $secondary-text-color;
@@ -365,10 +365,11 @@
 
         .review {
             background-color: #E5E5EA;
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 18px 17px;
             color: #8E8E93;
             min-height: 195px;
+            margin-bottom: 32px;
 
             h2 {
                 font-size: 1.2em;
