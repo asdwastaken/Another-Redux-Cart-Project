@@ -1,31 +1,25 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { openCart } from "../../../features/cartSlice";
+import { addToCart } from "../../../features/cartSlice";
+import { selectColor, selectSize } from "../../../features/productSlice";
 
 
 export default function InfoMenu() {
 
     const {
+        title,
         description,
         price,
         size,
         color,
+        selectedSize,
+        selectedColor,
+        amount,
     } = useSelector(state => state.product);
 
     const dispatch = useDispatch();
 
-    const [selectedSize, setSelectedSize] = useState('S');
-    const [selectedColor, setSelectedColor] = useState('black');
-
-
-    const selectSize = (size) => {
-        setSelectedSize(size);
-    }
-
-    const selectColor = (color) => {
-        setSelectedColor(color);
-    }
 
 
     const colors = () => {
@@ -33,12 +27,9 @@ export default function InfoMenu() {
             <div className={selectedColor == x ? "color selected" : "color"}
                 id={x}
                 key={index}
-                onClick={() => selectColor(x)}>
+                onClick={() => dispatch(selectColor(x))}>
             </div >)
     }
-
-
-
 
 
     return (
@@ -58,7 +49,7 @@ export default function InfoMenu() {
                         {size.map((x, index) =>
                             <div className={selectedSize == x ? "size selected" : "size"}
                                 key={index}
-                                onClick={(() => selectSize(x))}>
+                                onClick={(() => dispatch(selectSize(x)))}>
                                 {x}
                             </div>)}
                     </div>
@@ -79,7 +70,7 @@ export default function InfoMenu() {
                 </div>
                 <div className="product-buttons-container">
                     <Link className="shop-now-btn">Shop Now</Link>
-                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(openCart())}>Add to cart</Link>
+                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(addToCart({ title, price, selectedSize, selectedColor, amount }))}>Add to cart</Link>
                 </div>
             </div>
 

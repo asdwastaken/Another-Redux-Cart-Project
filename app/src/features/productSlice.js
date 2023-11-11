@@ -11,6 +11,9 @@ const initialState = {
     "reviews": [],
     "liked": false,
     "starRating": 0,
+    "selectedColor": '',
+    "selectedSize": '',
+    "amount": 1,
 }
 
 const productSlice = createSlice({
@@ -34,7 +37,7 @@ const productSlice = createSlice({
             reducer(state, action) {
                 state.reviews.push(action.payload);
             },
-            prepare({author, email, rating, message,}) {
+            prepare({ author, email, rating, message, }) {
                 return {
                     payload: {
                         author,
@@ -44,6 +47,12 @@ const productSlice = createSlice({
                     }
                 }
             }
+        },
+        selectSize: (state, action) => {
+            state.selectedSize = action.payload;
+        },
+        selectColor: (state, action) => {
+            state.selectedColor = action.payload;
         }
     },
     extraReducers: {
@@ -69,6 +78,6 @@ const productSlice = createSlice({
     }
 });
 
-export const { likeProduct, calculateRating, addReview} = productSlice.actions;
+export const { likeProduct, calculateRating, addReview, selectSize, selectColor } = productSlice.actions;
 
 export default productSlice.reducer;

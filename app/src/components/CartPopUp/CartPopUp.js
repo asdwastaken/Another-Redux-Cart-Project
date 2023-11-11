@@ -1,15 +1,21 @@
 import './cartPopUp.css';
 import { Link, NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { closeCart } from "../../features/cartSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { calculateTotal, closeCart } from "../../features/cartSlice";
 import beltImage from '../../content/images/belt-image.png'
 import glassesImage from '../../content/images/glasses-image.png'
+import productImage from '../../content/images/product_image.png'
+import { useEffect } from 'react';
 
 
 export default function CartPopUp() {
 
-
+    const { products, total } = useSelector(state => state.cart)
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(calculateTotal(products))
+    }, [total])
 
     return (
         <div className="cart">
@@ -89,10 +95,45 @@ export default function CartPopUp() {
                     </svg>
                 </div>
 
+                {products.map((x, index) => {
+                    return (
+                        <div className="cart-product-container" key={index}>
+                            <img src={productImage} />
+                            <div className="cart-product-info">
+                                <h1>{x.title}</h1>
+                                <div className="product-size">
+                                    <span>Size </span>
+                                    <span>{x.selectedSize}</span>
+                                </div>
+                                <div className="product-colors">
+                                    <span>Color </span>
+                                    <div className="colors">
+                                        <div className={`color ${x.selectedColor}`}></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="cart-product-counter">
+                                <button>-</button>
+                                <span>1</span>
+                                <button>+</button>
+                            </div>
+                            <div className="cart-product-price">
+                                <span>$</span>
+                                <span className="price">{x.price}</span>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="close-btn">
+                                <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    )
+                })}
+
                 <div className="price-total">
                     <span>Total amount </span>
                     <span>$</span>
-                    <span className="price">58</span>
+                    <span className="price">{total}</span>
                 </div>
             </div>
 
