@@ -15,18 +15,24 @@ import { getProduct } from '../../services/productService';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateRating, likeProduct, } from '../../features/productSlice';
+import { Outlet, useLocation } from 'react-router-dom';
 
 export default function Home() {
 
     const images = [image1, image2, image3, image4, image5];
     const [activeImage, setActiveImage] = useState(image1);
     const dispatch = useDispatch();
+    const cartPath = useLocation().pathname == '/cart';
+
 
     const { title,
         reviews,
         liked,
         starRating
     } = useSelector(state => state.product);
+
+    const { cartIsOpen } = useSelector(state => state.cart)
+
 
 
     useEffect(() => {
@@ -74,46 +80,48 @@ export default function Home() {
 
 
     return (
-        <div className="home">
-            <div className="home-product-container">
-                <div className="product-images">
-                    <div className="main-image-container">
-                        <img src={activeImage} className="main-product-image" />
-                    </div>
-                    <div className="secondary-images-container">
-                        {images.map((img, index) => (
-                            <div key={index} className={index === 0 ? "first-image-container" : "product-image-container"}>
-                                <img src={img} className={`product-image ${index === 0 ? 'first' : ''}`} onClick={() => onImageClick(img)} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="product-info">
-                    <div className="product-info-top">
-                        <div className="product-label">Popular</div>
-                        <div className="heart-icon-container">
-                            <img src={heartIcon} className="heart-icon" onClick={() => dispatch(likeProduct)} />
+        <>
+            <Outlet />
+
+            <div className={cartIsOpen || cartPath ? "open-cart home" : "home"}>
+                <div className="home-product-container">
+                    <div className="product-images">
+                        <div className="main-image-container">
+                            <img src={activeImage} className="main-product-image" />
+                        </div>
+                        <div className="secondary-images-container">
+                            {images.map((img, index) => (
+                                <div key={index} className={index === 0 ? "first-image-container" : "product-image-container"}>
+                                    <img src={img} className={`product-image ${index === 0 ? 'first' : ''}`} onClick={() => onImageClick(img)} />
+                                </div>
+                            ))}
                         </div>
                     </div>
-                    <h1>{title}</h1>
-                    <div className="review-stars-container">
-                        {renderRating(starRating)}
-                        <span>132 reviews</span>
+                    <div className="product-info">
+                        <div className="product-info-top">
+                            <div className="product-label">Popular</div>
+                            <div className="heart-icon-container">
+                                <img src={heartIcon} className="heart-icon" onClick={() => dispatch(likeProduct())} />
+                            </div>
+                        </div>
+                        <h1>{title}</h1>
+                        <div className="review-stars-container">
+                            {renderRating(starRating)}
+                            <span>132 reviews</span>
+                        </div>
+
+                        <HomeMenus
+                            onMenuClick={onMenuClick}
+                            activeMenu={activeMenu}
+                        />
                     </div>
-
-                    <HomeMenus
-                        onMenuClick={onMenuClick}
-                        activeMenu={activeMenu}
-                    />
                 </div>
+                <Reviews
+                    reviews={reviews}
+                    renderRating={renderRating}
+                    starRating={starRating}
+                />
             </div>
-            <Reviews
-                reviews={reviews}
-                renderRating={renderRating}
-                starRating={starRating}
-            />
-
-
-        </div>
+        </>
     )
 }

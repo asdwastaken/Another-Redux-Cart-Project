@@ -3,13 +3,16 @@ import logo from '../../content/Icons/logo.png'
 import facebookIcon from '../../content/Icons/facebook-icon.png'
 import twitterIcon from '../../content/Icons/twitter-icon.png'
 import instagramIcon from '../../content/Icons/instagram-icon.png'
-
-import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Footer() {
 
+    const { cartIsOpen } = useSelector(state => state.cart)
+    const cartPath = useLocation().pathname == '/cart';
+
     return (
-        <div className="footer">
+        <div className={cartIsOpen || cartPath? "open-cart footer" : "footer"}>
             <div className="footer-links">
                 <div className="footer-links-inner">
                     <NavLink to='/' className="footer-link" activeClassName="active">Home</NavLink>

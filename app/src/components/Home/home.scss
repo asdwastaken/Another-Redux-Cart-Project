@@ -6,7 +6,7 @@
     position: relative;
     top: 180px;
     width: 100%;
-    padding: 62px 113px 0 113px;
+    padding: 62px 113px 52px 113px;
 }
 
 
@@ -276,12 +276,19 @@
 
 
     .product-buttons-container {
-        button {
+        display: flex;
+
+        a {
             font-size: 1em;
-            width: 160px;
-            height: 52px;
             border-radius: 16px;
             cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            width: 160px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .shop-now-btn {
@@ -290,6 +297,7 @@
             border: 2px solid $secondary-text-color;
             margin-right: 24px;
             transition: all 0.15s ease-in-out;
+
 
             &:hover {
                 background-color: darken($secondary-text-color, 5%);
@@ -300,8 +308,9 @@
         .add-to-cart-btn {
             background-color: white;
             border: 2px solid $secondary-text-color;
-            color: $primary-text-color;
+            color: $secondary-text-color;
             transition: all 0.15s ease-in-out;
+
 
             &:hover {
                 background-color: darken($secondary-text-color, 5%);

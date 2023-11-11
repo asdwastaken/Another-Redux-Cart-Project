@@ -1,0 +1,124 @@
+@import '../../styles/variables/variables';
+
+.cart {
+    position: absolute;
+    background-color: $primary-background-color;
+    transform: translate(-50%, 50%);
+    left: 50%;
+    width: 1140px;
+    height: 600px;
+    z-index: 6;
+    border-radius: 16px;
+}
+
+.cart-menus {
+    display: flex;
+    justify-content: space-between;
+
+    .cart-menu-link {
+        font-size: 1em;
+        text-decoration: none;
+        font-weight: 700;
+        width: 285px;
+        text-align: center;
+        padding: 16px 0;
+        color: #D1D1D6;
+        border-bottom: 1px solid #EFEFF4;
+    }
+
+    .active {
+        border-bottom: 1px solid $secondary-text-color;
+        color: $primary-text-color;
+
+    }
+}
+
+.cart-products-container {
+    padding: 0 32px;
+}
+
+.cart-product-container {
+    display: flex;
+    align-items: center;
+    padding: 32px 0;
+    position: relative;
+    border-bottom: 1px solid #EFEFF4;
+
+
+    h1 {
+        font-size: 1.7em;
+        font-weight: 400;
+    }
+
+    span {
+        font-size: 0.8em;
+    }
+
+    img {
+        margin-right: 30px;
+    }
+
+    .product-colors {
+        display: flex;
+        align-items: center;
+
+        .colors {
+            display: flex;
+
+            .color {
+                width: 16px;
+                height: 16px;
+                background-color: #1B2437;
+                margin-left: 8px;
+                border-radius: 2px;
+            }
+        }
+    }
+
+    .cart-product-counter {
+        position: absolute;
+        top: 66px;
+        right: 305px;
+
+        button {
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            border: 2px solid #D1D1D6;
+            background-color: $primary-background-color;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #D1D1D6;
+            cursor: pointer;
+        }
+
+        span {
+            font-size: 1em;
+            font-weight: 700;
+            margin-right: 16px;
+            margin-left: 16px;
+            color: #D1D1D6;
+        }
+    }
+
+    .cart-product-price {
+        position: absolute;
+        top: 57px;
+        right: 75px;
+
+        span {
+            font-size: 1.2em;
+        }
+
+        #price {
+            font-size: 1.7em;
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 76px;
+        right: 0;
+        cursor: pointer;
+    }
+}

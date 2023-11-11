@@ -5,14 +5,19 @@ import twitterIcon from '../../content/Icons/twitter-icon.png'
 import instagramIcon from '../../content/Icons/instagram-icon.png'
 import cartIcon from '../../content/Icons/cart-icon.png'
 import searchIcon from '../../content/Icons/search-icon.png'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 export default function Navbar() {
 
+    const { cartIsOpen } = useSelector(state => state.cart)
+    const cartPath = useLocation().pathname == '/cart';
+
+
     return (
-        <nav className="navbar">
+        <nav className={cartIsOpen || cartPath? "navbar open-cart" : "navbar"}>
             <div className="navbar-container">
                 <div className="navbar-upper">
                     <div className="logo">

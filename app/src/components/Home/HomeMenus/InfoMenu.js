@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { openCart } from "../../../features/cartSlice";
 
 
 export default function InfoMenu() {
@@ -10,6 +12,8 @@ export default function InfoMenu() {
         size,
         color,
     } = useSelector(state => state.product);
+
+    const dispatch = useDispatch();
 
     const [selectedSize, setSelectedSize] = useState('S');
     const [selectedColor, setSelectedColor] = useState('black');
@@ -32,6 +36,9 @@ export default function InfoMenu() {
                 onClick={() => selectColor(x)}>
             </div >)
     }
+
+
+
 
 
     return (
@@ -71,8 +78,8 @@ export default function InfoMenu() {
                     <span>{price}</span>
                 </div>
                 <div className="product-buttons-container">
-                    <button className="shop-now-btn">Shop Now</button>
-                    <button className="add-to-cart-btn">Add to cart</button>
+                    <Link className="shop-now-btn">Shop Now</Link>
+                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(openCart())}>Add to cart</Link>
                 </div>
             </div>
 

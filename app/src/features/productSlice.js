@@ -64,7 +64,7 @@ const productSlice = createSlice({
             state.size = action.payload.size;
             state.color = action.payload.color;
             state.reviews = action.payload.reviews;
-            state.liked = action.payload.liked;
+            state.liked = state.liked;
         }
     }
 });
