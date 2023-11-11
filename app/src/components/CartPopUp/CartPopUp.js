@@ -1,7 +1,7 @@
 import './cartPopUp.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { toggleCart } from "../../features/cartSlice";
+import { closeCart } from "../../features/cartSlice";
 import beltImage from '../../content/images/belt-image.png'
 import glassesImage from '../../content/images/glasses-image.png'
 
@@ -97,7 +97,7 @@ export default function CartPopUp() {
             </div>
 
             <div className="cart-buttons-container">
-                <Link to='/' className="back-btn" onClick={() => dispatch(toggleCart())}>To shop</Link>
+                <Link to='/' className="back-btn" onClick={() => dispatch(closeCart())}>To shop</Link>
                 <Link to='/checkout' className="continue-btn">Continue</Link>
             </div>
         </div>
