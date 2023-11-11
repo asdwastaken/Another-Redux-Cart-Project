@@ -35,6 +35,24 @@
 
 .cart-products-container {
     padding: 0 32px;
+
+    .price-total {
+        text-align: end;
+        background-color: $secondary-background-color;
+        margin: 0 -32px;
+        padding-right: 107px;
+
+        span {
+            font-size: 1.2em;
+        }
+
+        height: 60px;
+    }
+
+    .price {
+        font-size: 1.7em !important;
+        margin-left: 7px;
+    }
 }
 
 .cart-product-container {
@@ -48,6 +66,8 @@
     h1 {
         font-size: 1.7em;
         font-weight: 400;
+        overflow-wrap: break-word;
+        width: 350px;
     }
 
     span {
@@ -110,7 +130,7 @@
             font-size: 1.2em;
         }
 
-        #price {
+        .price {
             font-size: 1.7em;
         }
     }
@@ -121,4 +141,55 @@
         right: 0;
         cursor: pointer;
     }
+
+
+}
+
+.cart-buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 32px 24px 32px;
+
+    a {
+        font-size: 1em;
+        border-radius: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+        width: 160px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .continue-btn {
+        background-color: $secondary-text-color;
+        color: white;
+        border: 2px solid $secondary-text-color;
+        margin-right: 24px;
+        transition: all 0.15s ease-in-out;
+
+
+        &:hover {
+            background-color: darken($secondary-text-color, 5%);
+            border-color: darken($secondary-text-color, 5%);
+        }
+    }
+
+    .back-btn {
+        background-color: white;
+        border: 2px solid $secondary-text-color;
+        color: $secondary-text-color;
+        transition: all 0.15s ease-in-out;
+
+
+        &:hover {
+            background-color: darken($secondary-text-color, 5%);
+            border-color: darken($secondary-text-color, 5%);
+            color: white;
+        }
+    }
+
 }

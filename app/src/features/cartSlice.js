@@ -9,16 +9,14 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        openCart: (state) => {
-            state.cartIsOpen = true;
+        toggleCart: (state) => {
+            state.cartIsOpen = !state.cartIsOpen;
         },
-        closeCart: (state) => {
-            state.cartIsOpen = false;
-        }
+      
     }
 })
 
 
-export const { openCart, closeCart } = cartSlice.actions;
+export const { toggleCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

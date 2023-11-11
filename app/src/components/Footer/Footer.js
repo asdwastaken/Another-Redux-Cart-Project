@@ -9,10 +9,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 export default function Footer() {
 
     const { cartIsOpen } = useSelector(state => state.cart)
-    const cartPath = useLocation().pathname == '/cart';
+    const cartPath = useLocation().pathname;
+
+    const cartPathCheck = () => {
+        return cartPath == '/cart' || cartPath == '/checkout' || cartPath == '/shipping' || cartPath == '/done'
+    }
 
     return (
-        <div className={cartIsOpen || cartPath? "open-cart footer" : "footer"}>
+        <div className={cartIsOpen || cartPathCheck() ? "open-cart footer" : "footer"}>
             <div className="footer-links">
                 <div className="footer-links-inner">
                     <NavLink to='/' className="footer-link" activeClassName="active">Home</NavLink>

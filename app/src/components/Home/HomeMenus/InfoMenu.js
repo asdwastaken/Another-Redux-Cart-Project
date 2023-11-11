@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { openCart } from "../../../features/cartSlice";
+import { toggleCart } from "../../../features/cartSlice";
 
 
 export default function InfoMenu() {
@@ -79,7 +79,7 @@ export default function InfoMenu() {
                 </div>
                 <div className="product-buttons-container">
                     <Link className="shop-now-btn">Shop Now</Link>
-                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(openCart())}>Add to cart</Link>
+                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(toggleCart())}>Add to cart</Link>
                 </div>
             </div>
 

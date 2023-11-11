@@ -13,11 +13,14 @@ import { useSelector } from 'react-redux';
 export default function Navbar() {
 
     const { cartIsOpen } = useSelector(state => state.cart)
-    const cartPath = useLocation().pathname == '/cart';
+    const cartPath = useLocation().pathname;
 
+    const cartPathCheck = () => {
+        return cartPath == '/cart' || cartPath == '/checkout' || cartPath == '/shipping' || cartPath == '/done'
+    }
 
     return (
-        <nav className={cartIsOpen || cartPath? "navbar open-cart" : "navbar"}>
+        <nav className={cartIsOpen || cartPathCheck() ? "navbar open-cart" : "navbar"}>
             <div className="navbar-container">
                 <div className="navbar-upper">
                     <div className="logo">

@@ -22,7 +22,12 @@ export default function Home() {
     const images = [image1, image2, image3, image4, image5];
     const [activeImage, setActiveImage] = useState(image1);
     const dispatch = useDispatch();
-    const cartPath = useLocation().pathname == '/cart';
+    const cartPath = useLocation().pathname;
+
+    const cartPathCheck = () => {
+        return cartPath == '/cart' || cartPath == '/checkout' || cartPath == '/shipping' || cartPath == '/done'
+    }
+
 
 
     const { title,
@@ -83,7 +88,7 @@ export default function Home() {
         <>
             <Outlet />
 
-            <div className={cartIsOpen || cartPath ? "open-cart home" : "home"}>
+            <div className={cartIsOpen || cartPathCheck() ? "open-cart home" : "home"}>
                 <div className="home-product-container">
                     <div className="product-images">
                         <div className="main-image-container">
