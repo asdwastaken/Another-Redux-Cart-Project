@@ -33,14 +33,13 @@
   justify-content: space-between;
   margin-bottom: 68px;
 }
-
-.social-icons {
+.navbar-upper .social-icons {
   display: flex;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
 }
-.social-icons .social-icon-link {
+.navbar-upper .social-icons .social-icon-link {
   margin-right: 40px;
 }
 

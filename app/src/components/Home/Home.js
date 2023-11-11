@@ -60,10 +60,10 @@ export default function Home() {
     const renderRating = (rating) => {
         const stars = [];
         for (let i = 0; i < rating; i++) {
-            stars.push(< img src={starActive} className="review-star" key={i} name={`star${i+1}`}/>)
+            stars.push(< img src={starActive} className="review-star" key={i} name={`star${i + 1}`} />)
         }
         for (let i = stars.length; i < 5; i++) {
-            stars.push(<img key={i} src={starInactive} className="review-star" name={`star${i+1}`}/>);
+            stars.push(<img key={i} src={starInactive} className="review-star" name={`star${i + 1}`} />);
         }
 
         return stars;
@@ -112,6 +112,7 @@ export default function Home() {
                 renderRating={renderRating}
                 starRating={starRating}
             />
+
 
         </div>
     )

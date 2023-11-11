@@ -1,0 +1,117 @@
+@import '../../styles/variables/variables';
+
+
+.footer {
+    background-color: $primary-background-color;
+    position: relative;
+    top: 232px;
+
+}
+
+.footer-inner {
+    padding: 0 221px 26px 113px;
+}
+
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #EFEFF4;
+    padding-bottom: 23px;
+    padding-top: 24px;
+
+
+    .footer-links-inner {
+        margin-left: 80px;
+    }
+
+    .footer-link {
+        position: relative;
+        margin-right: 80px;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: 400;
+        text-decoration: none;
+        color: $primary-text-color;
+    }
+
+    .active {
+        &::after {
+            content: "";
+            height: 2px;
+            width: 100%;
+            background-color: $primary-text-color;
+            position: absolute;
+            top: 60%;
+            left: 0;
+        }
+    }
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+
+    #logo-container{
+        margin-right: 121px;
+    }
+    #hot-links-container{
+        margin-right: 97px;
+    }
+    #more-info-container{
+        margin-right: 148px;
+    }
+}
+
+.footer-container-inner {
+    display: flex;
+    flex-direction: column;
+
+    .logo {
+        margin-bottom: 24px;
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin-bottom: 7px;
+    }
+
+    p {
+        width: 267px;
+        color: #8E8E93;
+        font-size: 0.8em;
+        line-height: 24px;
+    }
+
+    a {
+        font-size: 0.8em;
+        text-decoration: none;
+        color: #8E8E93;
+        margin-top: 16px;
+
+    }
+}
+
+.footer-socials-container {
+    background-color: #EFEFF4;
+    padding: 26px 113px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #8E8E93;
+    font-weight: 400;
+    font-size: 0.8em;
+
+    .social-icon-link {
+        margin-left: 32px;
+    }
+}
