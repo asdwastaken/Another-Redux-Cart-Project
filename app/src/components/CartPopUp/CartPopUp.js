@@ -1,7 +1,7 @@
 import './cartPopUp.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { calculateTotal, closeCart } from "../../features/cartSlice";
+import { calculateTotal, closeCart, increaseAmount, decreaseAmount, removeItem } from "../../features/cartSlice";
 import beltImage from '../../content/images/belt-image.png'
 import glassesImage from '../../content/images/glasses-image.png'
 import productImage from '../../content/images/product_image.png'
@@ -10,12 +10,12 @@ import { useEffect } from 'react';
 
 export default function CartPopUp() {
 
-    const { products, total } = useSelector(state => state.cart)
+    const { products, total, amount } = useSelector(state => state.cart)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(calculateTotal(products))
-    }, [total])
+    }, [total, amount])
 
     return (
         <div className="cart">
@@ -56,7 +56,7 @@ export default function CartPopUp() {
                     </div>
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn">
                         <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -89,7 +89,7 @@ export default function CartPopUp() {
                         <span className="price">26</span>
                     </div>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn">
                         <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -114,15 +114,15 @@ export default function CartPopUp() {
                             </div>
 
                             <div className="cart-product-counter">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
+                                <button onClick={() => dispatch(decreaseAmount(x.title))}>-</button>
+                                <span>{x.amount}</span>
+                                <button onClick={() => dispatch(increaseAmount(x.title))}>+</button>
                             </div>
                             <div className="cart-product-price">
                                 <span>$</span>
                                 <span className="price">{x.price}</span>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="close-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn" onClick={()=>dispatch(removeItem(x.title))}>
                                 <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
