@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import glassesImage from '../content/static-images/glasses-image.png'
 import beltImage from '../content/static-images/belt-image.png'
 
+
 const initialState = {
     cartIsOpen: false,
     products: [
@@ -35,7 +36,18 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             state.cartIsOpen = true;
-            state.products.push(action.payload);
+
+            const persistedStateSerialized = localStorage.getItem('cartProducts');
+
+            if (persistedStateSerialized) {
+                const persistedState = JSON.parse(persistedStateSerialized);
+                persistedState.push(action.payload)
+                state.products = persistedState;
+            } else {
+                state.products.push(action.payload);
+            }
+            localStorage.setItem('cartProducts', JSON.stringify(state.products));
+
         },
         closeCart: (state) => {
             state.cartIsOpen = false;
@@ -58,6 +70,7 @@ const cartSlice = createSlice({
 
             product.amount += 1;
             state.amount += 1;
+            localStorage.setItem('cartProducts', JSON.stringify(state.products));
         },
         decreaseAmount: (state, action) => {
             const productId = action.payload;
@@ -69,14 +82,18 @@ const cartSlice = createSlice({
 
             product.amount -= 1;
             state.amount -= 1;
+            localStorage.setItem('cartProducts', JSON.stringify(state.products));
         },
         removeItem: (state, action) => {
             const productId = action.payload;
             state.products = state.products.filter(x => x.id !== productId);
             state.amount -= 1;
+            localStorage.setItem('cartProducts', JSON.stringify(state.products));
         },
     }
 })
+
+
 
 
 export const { addToCart, closeCart, calculateTotal, increaseAmount, decreaseAmount, removeItem } = cartSlice.actions;

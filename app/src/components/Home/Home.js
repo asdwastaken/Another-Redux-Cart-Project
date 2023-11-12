@@ -15,14 +15,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 export default function Home() {
 
     const [activeImage, setActiveImage] = useState('');
+
+
     const dispatch = useDispatch();
     const cartPath = useLocation().pathname;
 
     const cartPathCheck = () => {
         return cartPath == '/cart' || cartPath == '/checkout' || cartPath == '/shipping' || cartPath == '/done'
     }
-
-
 
     const {
         title,
@@ -32,9 +32,7 @@ export default function Home() {
         images
     } = useSelector(state => state.product);
 
-    const { cartIsOpen } = useSelector(state => state.cart)
-
-
+    const { cartIsOpen, products } = useSelector(state => state.cart);
 
     useEffect(() => {
         dispatch(getProduct('1'))
@@ -45,11 +43,9 @@ export default function Home() {
 
     }, [])
 
-
     const onImageClick = (image) => {
         setActiveImage(image)
     }
-
 
     const [activeMenu, setActiveMenu] = useState({
         info: true,
@@ -66,8 +62,6 @@ export default function Home() {
         }));
     }
 
-
-
     const renderRating = (rating) => {
         const stars = [];
         for (let i = 0; i < rating; i++) {
@@ -79,9 +73,6 @@ export default function Home() {
 
         return stars;
     }
-
-
-
 
 
     return (
