@@ -6,20 +6,22 @@ const initialState = {
     cartIsOpen: false,
     products: [
         {
+            "id": 0,
             "title": "Gucci Leather belt",
             "price": "32",
             "selectedSize": "70cm",
             "selectedColor": ["black", "yellow"],
             "images": [glassesImage],
-            "amount":1,
+            "amount": 1,
         },
         {
+            "id": 1,
             "title": "Fendi D-frame gold-tone sunglasses",
             "price": "26",
             "selectedSize": "Height: 6 cm / 2.3 in. Width: 15 cm / 5.9 in.",
             "selectedColor": ["black"],
             "images": [beltImage],
-            "amount":1,
+            "amount": 1,
 
         }
     ],
@@ -51,26 +53,26 @@ const cartSlice = createSlice({
             state.total = total;
         },
         increaseAmount: (state, action) => {
-            const productTitle = action.payload;
-            const product = state.products.find(x => x.title === productTitle);
+            const productId = action.payload;
+            const product = state.products.find(x => x.id === productId);
 
             product.amount += 1;
             state.amount += 1;
         },
         decreaseAmount: (state, action) => {
-            const productTitle = action.payload;
-            const product = state.products.find(x => x.title === productTitle);
+            const productId = action.payload;
+            const product = state.products.find(x => x.id === productId);
 
             if (product.amount == 1) {
-                state.products = state.products.filter(x => x.title !== productTitle);
+                state.products = state.products.filter(x => x.id !== productId);
             }
 
             product.amount -= 1;
             state.amount -= 1;
         },
         removeItem: (state, action) => {
-            const productTitle = action.payload;
-            state.products = state.products.filter(x => x.title !== productTitle);
+            const productId = action.payload;
+            state.products = state.products.filter(x => x.id !== productId);
             state.amount -= 1;
         },
     }

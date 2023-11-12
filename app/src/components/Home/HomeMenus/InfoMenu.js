@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../features/cartSlice";
 import { selectColor, selectSize } from "../../../features/productSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 
 export default function InfoMenu() {
 
     const {
+        id,
         title,
         description,
         price,
@@ -70,7 +72,7 @@ export default function InfoMenu() {
                 </div>
                 <div className="product-buttons-container">
                     <Link className="shop-now-btn">Shop Now</Link>
-                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(addToCart({ title, price, selectedSize, selectedColor, amount, images }))}>Add to cart</Link>
+                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(addToCart({ title, price, selectedSize, selectedColor, amount, images, id: nanoid() }))}>Add to cart</Link>
                 </div>
             </div>
 

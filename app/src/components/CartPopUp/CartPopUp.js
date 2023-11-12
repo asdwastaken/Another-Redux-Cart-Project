@@ -45,15 +45,15 @@ export default function CartPopUp() {
                             </div>
 
                             <div className="cart-product-counter">
-                                <button onClick={() => dispatch(decreaseAmount(x.title))}>-</button>
+                                <button onClick={() => dispatch(decreaseAmount(x.id))}>-</button>
                                 <span>{x.amount}</span>
-                                <button onClick={() => dispatch(increaseAmount(x.title))}>+</button>
+                                <button onClick={() => dispatch(increaseAmount(x.id))}>+</button>
                             </div>
                             <div className="cart-product-price">
                                 <span>$</span>
                                 <span className="price">{Number(x.price) * x.amount}</span>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn" onClick={() => dispatch(removeItem(x.title))}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn" onClick={() => dispatch(removeItem(x.id))}>
                                 <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>

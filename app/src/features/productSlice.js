@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { getProduct } from "../services/productService";
 
 
 const initialState = {
+    "id": "",
     "title": "",
     "description": "",
     "price": "",
@@ -14,7 +15,7 @@ const initialState = {
     "selectedColor": ['black'],
     "selectedSize": 'S',
     "amount": 1,
-    "images":[]
+    "images": []
 }
 
 const productSlice = createSlice({
@@ -58,6 +59,7 @@ const productSlice = createSlice({
     },
     extraReducers: {
         [getProduct.pending]: (state) => {
+            state.id = "";
             state.title = "";
             state.description = "";
             state.price = "";
@@ -69,6 +71,7 @@ const productSlice = createSlice({
         },
 
         [getProduct.fulfilled]: (state, action) => {
+            state.id = nanoid();
             state.title = action.payload.title;
             state.description = action.payload.description;
             state.price = action.payload.price;

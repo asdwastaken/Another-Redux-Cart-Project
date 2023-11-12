@@ -24,7 +24,8 @@ export default function Home() {
 
 
 
-    const { title,
+    const {
+        title,
         reviews,
         liked,
         starRating,
