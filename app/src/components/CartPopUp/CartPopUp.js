@@ -2,9 +2,7 @@ import './cartPopUp.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateTotal, closeCart, increaseAmount, decreaseAmount, removeItem } from "../../features/cartSlice";
-import beltImage from '../../content/images/belt-image.png'
-import glassesImage from '../../content/images/glasses-image.png'
-import productImage from '../../content/images/product_image.png'
+
 import { useEffect } from 'react';
 
 
@@ -28,77 +26,10 @@ export default function CartPopUp() {
 
             <div className="cart-products-container">
 
-                <div className="cart-product-container">
-                    <img src={beltImage} />
-                    <div className="cart-product-info">
-                        <h1>Gucci Leather belt</h1>
-                        <div className="product-size">
-                            <span>Size </span>
-                            <span>70cm</span>
-                        </div>
-                        <div className="product-colors">
-                            <span>Color </span>
-                            <div className="colors">
-                                <div className="color"></div>
-                                <div className="color"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cart-product-counter">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div className="cart-product-price">
-                        <span>$</span>
-                        <span className="price">32</span>
-                    </div>
-
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn">
-                        <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-
-                </div>
-
-                <div className="cart-product-container">
-                    <img src={glassesImage} />
-                    <div className="cart-product-info">
-                        <h1>Fendi D-frame gold-tone sunglasses</h1>
-                        <div className="product-size">
-                            <span>Size </span>
-                            <span>Height: 6 cm / 2.3 in. Width: 15 cm / 5.9 in.</span>
-                        </div>
-                        <div className="product-colors">
-                            <span>Color </span>
-                            <div className="colors">
-                                <div className="color"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cart-product-counter">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
-                    </div>
-                    <div className="cart-product-price">
-                        <span>$</span>
-                        <span className="price">26</span>
-                    </div>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn">
-                        <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </div>
-
                 {products.map((x, index) => {
                     return (
                         <div className="cart-product-container" key={index}>
-                            <img src={productImage} />
+                            <img src={x.images[0]} />
                             <div className="cart-product-info">
                                 <h1>{x.title}</h1>
                                 <div className="product-size">
@@ -108,7 +39,7 @@ export default function CartPopUp() {
                                 <div className="product-colors">
                                     <span>Color </span>
                                     <div className="colors">
-                                        <div className={`color ${x.selectedColor}`}></div>
+                                        {x.selectedColor.map(color => <div className={`color ${color}`}></div>)}
                                     </div>
                                 </div>
                             </div>
@@ -120,15 +51,16 @@ export default function CartPopUp() {
                             </div>
                             <div className="cart-product-price">
                                 <span>$</span>
-                                <span className="price">{x.price}</span>
+                                <span className="price">{Number(x.price) * x.amount}</span>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn" onClick={()=>dispatch(removeItem(x.title))}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className="remove-btn" onClick={() => dispatch(removeItem(x.title))}>
                                 <path d="M6.34314 6.34326L17.6568 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M17.6568 6.34326L6.34314 17.657" stroke="#D1D1D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </div>
                     )
                 })}
+
 
                 <div className="price-total">
                     <span>Total amount </span>

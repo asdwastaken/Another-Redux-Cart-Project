@@ -89,6 +89,9 @@
 .cart-product-container .product-colors .colors .green {
   background-color: #32E0C4;
 }
+.cart-product-container .product-colors .colors .yellow {
+  background-color: #F3C623;
+}
 .cart-product-container .cart-product-counter {
   position: absolute;
   top: 66px;

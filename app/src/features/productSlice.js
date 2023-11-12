@@ -11,9 +11,10 @@ const initialState = {
     "reviews": [],
     "liked": false,
     "starRating": 0,
-    "selectedColor": '',
-    "selectedSize": '',
+    "selectedColor": ['black'],
+    "selectedSize": 'S',
     "amount": 1,
+    "images":[]
 }
 
 const productSlice = createSlice({
@@ -52,7 +53,7 @@ const productSlice = createSlice({
             state.selectedSize = action.payload;
         },
         selectColor: (state, action) => {
-            state.selectedColor = action.payload;
+            state.selectedColor = [action.payload];
         }
     },
     extraReducers: {
@@ -64,6 +65,7 @@ const productSlice = createSlice({
             state.color = {};
             state.reviews = [];
             state.liked = false;
+            state.images = [];
         },
 
         [getProduct.fulfilled]: (state, action) => {
@@ -74,6 +76,7 @@ const productSlice = createSlice({
             state.color = action.payload.color;
             state.reviews = action.payload.reviews;
             state.liked = state.liked;
+            state.images = action.payload.images;
         }
     }
 });

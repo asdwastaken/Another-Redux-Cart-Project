@@ -1,11 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import glassesImage from '../content/static-images/glasses-image.png'
+import beltImage from '../content/static-images/belt-image.png'
 
 const initialState = {
     cartIsOpen: false,
-    products: [],
-    total: 58,
-    amount: 2,
+    products: [
+        {
+            "title": "Gucci Leather belt",
+            "price": "32",
+            "selectedSize": "70cm",
+            "selectedColor": ["black", "yellow"],
+            "images": [glassesImage],
+            "amount":1,
+        },
+        {
+            "title": "Fendi D-frame gold-tone sunglasses",
+            "price": "26",
+            "selectedSize": "Height: 6 cm / 2.3 in. Width: 15 cm / 5.9 in.",
+            "selectedColor": ["black"],
+            "images": [beltImage],
+            "amount":1,
+
+        }
+    ],
+    total: 0,
+    amount: 0,
 }
 
 const cartSlice = createSlice({
@@ -28,8 +47,8 @@ const cartSlice = createSlice({
                 amount += x.amount;
             })
 
-            state.amount = amount + 2;
-            state.total = total + 32 + 26;
+            state.amount = amount;
+            state.total = total;
         },
         increaseAmount: (state, action) => {
             const productTitle = action.payload;

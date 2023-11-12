@@ -27,6 +27,13 @@
                 "rating": "3",
                 "message": "Example review 2"
             }
+        ],
+        "images": [
+            "../images/product_image.png",
+            "../images/product_image1.png",
+            "../images/product_image2.png",
+            "../images/product_image3.png",
+            "../images/product_image4.png"
         ]
     },
     {

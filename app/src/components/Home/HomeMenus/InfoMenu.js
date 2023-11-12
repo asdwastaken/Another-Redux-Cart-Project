@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../features/cartSlice";
@@ -16,6 +15,7 @@ export default function InfoMenu() {
         selectedSize,
         selectedColor,
         amount,
+        images,
     } = useSelector(state => state.product);
 
     const dispatch = useDispatch();
@@ -70,7 +70,7 @@ export default function InfoMenu() {
                 </div>
                 <div className="product-buttons-container">
                     <Link className="shop-now-btn">Shop Now</Link>
-                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(addToCart({ title, price, selectedSize, selectedColor, amount }))}>Add to cart</Link>
+                    <Link to="/cart" className="add-to-cart-btn" onClick={() => dispatch(addToCart({ title, price, selectedSize, selectedColor, amount, images }))}>Add to cart</Link>
                 </div>
             </div>
 

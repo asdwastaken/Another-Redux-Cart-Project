@@ -11,3 +11,4 @@ export const getProduct = createAsyncThunk('product/getProduct', (id) => {
         })
         .catch(err => console.log(`Error: ${err}`));
 })
+

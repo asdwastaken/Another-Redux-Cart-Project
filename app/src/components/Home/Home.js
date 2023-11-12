@@ -1,9 +1,4 @@
 import './home.css';
-import image1 from '../../content/images/product_image.png';
-import image2 from '../../content/images/product_image1.png';
-import image3 from '../../content/images/product_image2.png';
-import image4 from '../../content/images/product_image3.png';
-import image5 from '../../content/images/product_image4.png';
 import heartIcon from '../../content/Icons/heart-icon.png';
 import starActive from '../../content/Icons/star-active.png';
 import starInactive from '../../content/Icons/star-inactive.png';
@@ -19,8 +14,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 export default function Home() {
 
-    const images = [image1, image2, image3, image4, image5];
-    const [activeImage, setActiveImage] = useState(image1);
+    const [activeImage, setActiveImage] = useState('');
     const dispatch = useDispatch();
     const cartPath = useLocation().pathname;
 
@@ -33,7 +27,8 @@ export default function Home() {
     const { title,
         reviews,
         liked,
-        starRating
+        starRating,
+        images
     } = useSelector(state => state.product);
 
     const { cartIsOpen } = useSelector(state => state.cart)
@@ -42,7 +37,11 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getProduct('1'))
-            .then(() => dispatch(calculateRating()));
+            .then((result) => {
+                setActiveImage(result.payload.images[0])
+                dispatch(calculateRating())
+            });
+
     }, [])
 
 
