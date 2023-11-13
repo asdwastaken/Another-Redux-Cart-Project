@@ -47,7 +47,13 @@ const cartSlice = createSlice({
                 state.products.push(action.payload);
             }
             localStorage.setItem('cartProducts', JSON.stringify(state.products));
-
+        },
+        getCartProducts: (state) => {
+            const persistedStateSerialized = localStorage.getItem('cartProducts');
+            if (persistedStateSerialized) {
+                const persistedState = JSON.parse(persistedStateSerialized);
+                state.products = persistedState;
+            }
         },
         closeCart: (state) => {
             state.cartIsOpen = false;
@@ -96,6 +102,6 @@ const cartSlice = createSlice({
 
 
 
-export const { addToCart, closeCart, calculateTotal, increaseAmount, decreaseAmount, removeItem } = cartSlice.actions;
+export const { addToCart, closeCart, calculateTotal, increaseAmount, decreaseAmount, removeItem, getCartProducts } = cartSlice.actions;
 
 export default cartSlice.reducer;

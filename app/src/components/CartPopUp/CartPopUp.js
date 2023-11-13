@@ -1,15 +1,14 @@
 import './cartPopUp.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { calculateTotal, closeCart, increaseAmount, decreaseAmount, removeItem } from "../../features/cartSlice";
+import { calculateTotal, closeCart, increaseAmount, decreaseAmount, removeItem, getCartProducts } from "../../features/cartSlice";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 
 export default function CartPopUp() {
 
     const { products, total, amount } = useSelector(state => state.cart);
-    const [cartProducts, setCartProducts] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -19,11 +18,8 @@ export default function CartPopUp() {
     }, [total, amount])
 
     useEffect(() => {
-        const serializedProducts = localStorage.getItem('cartProducts');
-        if (serializedProducts) {
-            setCartProducts(JSON.parse(serializedProducts));
-        }
-    }, [products])
+        dispatch(getCartProducts());
+    }, [])
 
     return (
         <div className="cart">
@@ -36,7 +32,7 @@ export default function CartPopUp() {
 
             <div className="cart-products-container">
 
-                {cartProducts.map((x, index) => {
+                {products.map((x, index) => {
                     return (
                         <div className="cart-product-container" key={index}>
                             <img src={x.images[0]} />
