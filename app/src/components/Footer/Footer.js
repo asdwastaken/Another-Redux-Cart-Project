@@ -38,29 +38,36 @@ export default function Footer() {
                             aesthetic expression at a particular time, place and in a specific context, especially in clothing, footwear, lifestyle, accessories, makeup.
                         </p>
                     </div>
+                    <div className="footer-links-container">
+                        <div className="footer-container-inner" id="hot-links-container">
+                            <h2>Hot links</h2>
+                            <div className="footer-container-inner-links">
+                                <Link to='/'>Home</Link>
+                                <Link to='/'>Shop</Link>
+                                <Link to='/'>Blog</Link>
+                                <Link to='/'>Contact</Link>
+                            </div>
+                        </div>
 
-                    <div className="footer-container-inner" id="hot-links-container">
-                        <h2>Hot links</h2>
-                        <Link to='/'>Home</Link>
-                        <Link to='/'>Shop</Link>
-                        <Link to='/'>Blog</Link>
-                        <Link to='/'>Contact</Link>
-                    </div>
+                        <div className="footer-container-inner" id="more-info-container">
+                            <h2>More info</h2>
+                            <div className="footer-container-inner-links">
+                                <Link to='/'>How it works</Link>
+                                <Link to='/'>About us</Link>
+                                <Link to='/'>Decline rules</Link>
+                                <Link to='/'>Terms & Conditions</Link>
+                            </div>
+                        </div>
 
-                    <div className="footer-container-inner" id="more-info-container">
-                        <h2>More info</h2>
-                        <Link to='/'>How it works</Link>
-                        <Link to='/'>About us</Link>
-                        <Link to='/'>Decline rules</Link>
-                        <Link to='/'>Terms & Conditions</Link>
-                    </div>
-
-                    <div className="footer-container-inner" id="customer-care-container">
-                        <h2>Customer care</h2>
-                        <Link to='/'>FAQ</Link>
-                        <Link to='/'>Terms of use</Link>
-                        <Link to='/'>Privacy Policy</Link>
-                        <Link to='/'>Discount system</Link>
+                        <div className="footer-container-inner" id="customer-care-container">
+                            <h2>Customer care</h2>
+                            <div className="footer-container-inner-links">
+                                <Link to='/'>FAQ</Link>
+                                <Link to='/'>Terms of use</Link>
+                                <Link to='/'>Privacy Policy</Link>
+                                <Link to='/'>Discount system</Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
