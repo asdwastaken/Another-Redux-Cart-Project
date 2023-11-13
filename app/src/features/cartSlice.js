@@ -37,15 +37,7 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             state.cartIsOpen = true;
 
-            const persistedStateSerialized = localStorage.getItem('cartProducts');
-
-            if (persistedStateSerialized) {
-                const persistedState = JSON.parse(persistedStateSerialized);
-                persistedState.push(action.payload)
-                state.products = persistedState;
-            } else {
-                state.products.push(action.payload);
-            }
+            state.products.push(action.payload);
             localStorage.setItem('cartProducts', JSON.stringify(state.products));
         },
         getCartProducts: (state) => {
